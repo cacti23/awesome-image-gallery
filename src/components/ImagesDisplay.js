@@ -1,9 +1,12 @@
 import React from 'react';
 
-const ImagesDisplay = () => {
+const ImagesDisplay = ({ images }) => {
   return (
     <div className='grid-images-container'>
-      <h1>images</h1>
+      <div className='grid-images-item'>
+        <img src={images[0].webformatURL} alt='' />
+        <img src={images[1].webformatURL} alt='' />
+      </div>
     </div>
   );
 };

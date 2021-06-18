@@ -29,8 +29,15 @@ body {
   align-content: center;
 }
 
-/* .grid-search-container {
+.grid-search-container {
+  background-color: aliceblue;
+  padding: 10px;
 }
 
 .grid-images-container {
-} */
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  overflow: auto;
+}
