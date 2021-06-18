@@ -1,12 +1,16 @@
 import React from 'react';
 
 const ImagesDisplay = ({ images }) => {
+  console.log(images);
   return (
     <div className='grid-images-container'>
-      <div className='grid-images-item'>
-        <img src={images[0].webformatURL} alt='' />
-        <img src={images[1].webformatURL} alt='' />
-      </div>
+      {images.map(image => {
+        return (
+          <div key={image.id} className='grid-images-item'>
+            <img src={image.webformatURL} alt='' />
+          </div>
+        );
+      })}
     </div>
   );
 };
