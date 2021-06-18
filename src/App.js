@@ -7,23 +7,24 @@ import './App.css';
 function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchText, setSearchText] = useState('');
-  const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchText}&image_type=photo`;
+  const [searchTerm, setSearchTerm] = useState('');
+  const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchTerm}&image_type=photo`;
 
   const fetchImages = async url => {
     const res = await fetch(url);
     const data = await res.json();
     setImages(data.hits);
-    setIsLoading(false);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     fetchImages(url);
-  }, [searchText]);
+    setIsLoading(false);
+  }, [searchTerm]);
 
   return (
     <div className='grid-container-app'>
-      <Searchbar searchText={searchText} setSearchText={setSearchText} />
+      <Searchbar searchText={text => setSearchTerm(text)} />
       {isLoading ? <Loading /> : <ImagesDisplay images={images} />}
     </div>
   );

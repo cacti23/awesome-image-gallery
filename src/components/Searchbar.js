@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 
-const Searchbar = ({ searchText, setSearchText }) => {
+const Searchbar = ({ searchText }) => {
   return (
     <div className='search-container'>
       <div className='search-bar'>
@@ -9,8 +9,7 @@ const Searchbar = ({ searchText, setSearchText }) => {
         <input
           type='text'
           placeholder='Search Photos'
-          value={searchText}
-          onChange={e => setSearchText(e.target.value)}
+          onChange={e => searchText(e.target.value)}
         />
       </div>
     </div>
