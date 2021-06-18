@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ImagesDisplay from './components/ImagesDisplay';
 import Loading from './components/Loading';
+import Searchbar from './components/Searchbar';
 import './App.css';
 
 function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [term, setTerm] = useState('space');
-  const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${term}&image_type=photo`;
+  const [searchText, setSearchText] = useState('');
+  const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchText}&image_type=photo`;
 
   const fetchImages = async url => {
     const res = await fetch(url);
@@ -18,13 +19,11 @@ function App() {
 
   useEffect(() => {
     fetchImages(url);
-  }, [term]);
+  }, [searchText]);
 
   return (
     <div className='grid-container-app'>
-      <div className='grid-search-container'>
-        <h1>search</h1>
-      </div>
+      <Searchbar searchText={searchText} setSearchText={setSearchText} />
       {isLoading ? <Loading /> : <ImagesDisplay images={images} />}
     </div>
   );

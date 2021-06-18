@@ -15,21 +15,45 @@
 }
 
 body {
-  background-color: var(--clr-background);
+  /* background-color: var(--clr-background); */
+  background-color: aliceblue;
   font-family: 'Oxygen', sans-serif;
-  color: white;
+  color: black;
 }
 
 .grid-container-app {
   display: grid;
   grid-template-columns: 100vw;
-  grid-template-rows: 8vh 92vh;
+  grid-template-rows: 100px auto;
   justify-content: center;
   align-content: center;
 }
 
-.grid-search-container {
+.search-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
   padding: 15px;
+  padding-left: 30px;
+}
+.search-container .search-bar {
+  width: 500px;
+  height: 50px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.search-bar .search-icon {
+  font-size: 50px;
+}
+
+.search-bar input {
+  width: 450px;
+  height: 50px;
+  border: none;
+  outline: none;
+  font-size: 30px;
 }
 
 .grid-images-container {
