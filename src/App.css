@@ -13,6 +13,24 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: var(--clr-background);
+  font-family: 'Oxygen', sans-serif;
+  color: white;
+  height: 100vh;
+}
 
 .grid-container-app {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 9fr;
+  justify-content: center;
+  height: 100vh;
+  align-content: center;
 }
+
+/* .grid-search-container {
+}
+
+.grid-images-container {
+} */
