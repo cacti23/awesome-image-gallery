@@ -2,7 +2,8 @@
 
 /* =====Variables===== */
 :root {
-  --clr-background: rgb(16, 14, 28);
+  --clr-search-color: rgb(16, 14, 28);
+  --clr-background: rgb(14, 65, 108);
   --clr-text: rgb(255, 255, 255);
   --clr-search: rgb(83, 88, 118);
   --clr-input-background: rgb(30, 35, 50);
@@ -20,7 +21,7 @@
 }
 
 body {
-  background-color: rgb(14, 65, 108);
+  background-color: var(--clr-background);
   font-family: 'Oxygen', sans-serif;
 }
 
@@ -39,7 +40,7 @@ body {
   position: fixed;
   top: 10px;
   left: 20px;
-  background-color: var(--clr-background);
+  background-color: var(--clr-search-color);
   opacity: 0.7;
   border-radius: 10px;
 }
