@@ -31,7 +31,6 @@ function App() {
 
   return (
     <div className='grid-container-app'>
-      {console.log(isLoading)}
       <Searchbar searchText={text => setSearchTerm(text)} />
       {!isLoading && images.length === 0 && (
         <div className='loading'>
