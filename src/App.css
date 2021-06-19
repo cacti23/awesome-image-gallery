@@ -68,9 +68,17 @@ body {
 
 /* =====Loading===== */
 .loading {
-  font-size: 50px;
+  width: 500px;
+  height: 100px;
   text-align: center;
+  margin: 200px auto 0px;
 }
+
+.loading h1 {
+  font-size: 50px;
+  color: white;
+}
+
 /* =====Images Container===== */
 .grid-images-container {
   display: grid;
