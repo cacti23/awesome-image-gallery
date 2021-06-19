@@ -11,19 +11,20 @@ function App() {
   const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchTerm}&image_type=photo`;
 
   const fetchImages = async url => {
+    setIsLoading(true);
     const res = await fetch(url);
     const data = await res.json();
     setImages(data.hits);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    setIsLoading(true);
     fetchImages(url);
-    setIsLoading(false);
   }, [searchTerm]);
 
   return (
     <div className='grid-container-app'>
+      {console.log(isLoading)}
       <Searchbar searchText={text => setSearchTerm(text)} />
       {isLoading ? <Loading /> : <ImagesDisplay images={images} />}
     </div>
