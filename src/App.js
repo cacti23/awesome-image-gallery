@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('camping');
+  const [searchTerm, setSearchTerm] = useState('mountain');
   const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchTerm}&image_type=photo`;
 
   const fetchImages = async link => {
