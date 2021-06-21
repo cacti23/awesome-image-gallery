@@ -7,7 +7,10 @@ const ImageCard = ({ image }) => {
       <img src={image.webformatURL} alt='' />
       <div className='overlay'>
         <AiOutlineLike />
+        <span>: {image.likes}</span>
+        <span> </span>
         <AiOutlineCloudDownload />
+        <span>: {image.downloads}</span>
       </div>
     </div>
   );
