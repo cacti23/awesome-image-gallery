@@ -12,14 +12,16 @@ const Searchbar = ({ searchText, pageSet }) => {
 
   return (
     <div className='search-container'>
-      <AiOutlineSearch className='search-icon' />
-      <form onSubmit={onSubmit}>
-        <input
-          type='text'
-          placeholder='Search Photos'
-          onChange={e => setText(e.target.value)}
-        />
-      </form>
+      <div className='search-bar'>
+        <AiOutlineSearch className='search-icon' />
+        <form onSubmit={onSubmit}>
+          <input
+            type='text'
+            placeholder='Search Photos'
+            onChange={e => setText(e.target.value)}
+          />
+        </form>
+      </div>
     </div>
   );
 };
