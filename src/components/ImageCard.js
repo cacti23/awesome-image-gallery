@@ -4,15 +4,21 @@ import { AiOutlineLike, AiOutlineCloudDownload } from 'react-icons/ai';
 const ImageCard = ({ image }) => {
   return (
     <div key={image.id} className='grid-images-item'>
-      <a href={image.largeImageURL} target='_blank'>
+      <a href={image.largeImageURL} target='_blank' rel='noreferrer'>
         <img src={image.webformatURL} alt='' />
       </a>
       <div className='overlay'>
-        <AiOutlineLike />
-        <span>: {image.likes}</span>
-        <span> </span>
-        <AiOutlineCloudDownload />
-        <span>: {image.downloads}</span>
+        <div>
+          <p>
+            <AiOutlineLike /> : {image.likes}
+          </p>
+          <p>
+            <AiOutlineCloudDownload /> : {image.downloads}
+          </p>
+        </div>
+        <a href={`https://pixabay.com/users/${image.user}`}>
+          <img src={image.userImageURL} alt={image.user} />
+        </a>
       </div>
     </div>
   );

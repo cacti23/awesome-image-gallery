@@ -14,6 +14,7 @@ function App() {
     setIsLoading(true);
     let url;
     url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchTerm}&page=${page}&image_type=photo`;
+    console.log(url);
     try {
       const res = await fetch(url);
       const data = await res.json();
