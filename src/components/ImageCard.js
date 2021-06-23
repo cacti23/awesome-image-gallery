@@ -4,7 +4,9 @@ import { AiOutlineLike, AiOutlineCloudDownload } from 'react-icons/ai';
 const ImageCard = ({ image }) => {
   return (
     <div key={image.id} className='grid-images-item'>
-      <img src={image.webformatURL} alt='' />
+      <a href={image.largeImageURL} target='_blank'>
+        <img src={image.webformatURL} alt='' />
+      </a>
       <div className='overlay'>
         <AiOutlineLike />
         <span>: {image.likes}</span>

@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
 
@@ -42,8 +42,8 @@ function App() {
   useEffect(() => {
     const event = window.addEventListener('scroll', () => {
       if (
-        window.innerHeight + window.scrollY >=
-        document.body.scrollHeight - 2
+        !isLoading &&
+        window.innerHeight + window.scrollY >= document.body.scrollHeight - 2
       ) {
         setPage(oldPage => oldPage + 1);
       }
@@ -52,15 +52,20 @@ function App() {
   }, []);
 
   return (
-    <div className='grid-container-app'>
-      <Searchbar searchText={text => setSearchTerm(text)} />
-      {!isLoading && images.length === 0 && (
-        <div className='loading'>
-          <h1>No Images Found</h1>
-        </div>
-      )}
-      <ImagesDisplay images={images} />
-      {isLoading && <Loading />}
+    <div>
+      <Searchbar
+        searchText={text => setSearchTerm(text)}
+        pageSet={page => setPage(page)}
+      />
+      <div className='grid-container-app'>
+        {!isLoading && images.length === 0 && (
+          <div className='loading'>
+            <h1>No Images Found</h1>
+          </div>
+        )}
+        <ImagesDisplay images={images} />
+        {isLoading && <Loading />}
+      </div>
     </div>
   );
 }
