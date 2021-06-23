@@ -50,6 +50,7 @@ function App() {
       }
     });
     return () => window.removeEventListener('scroll', event);
+    // eslint-disable-next-line
   }, []);
 
   return (
