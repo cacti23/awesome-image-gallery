@@ -7,27 +7,49 @@ import './App.css';
 function App() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('mountain');
-  const url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchTerm}&image_type=photo`;
+  const [searchTerm, setSearchTerm] = useState('');
+  const [page, setPage] = useState(1);
 
-  const fetchImages = async link => {
+  const fetchImages = async () => {
     setIsLoading(true);
+    let url;
+    url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_API_KEY}&q=${searchTerm}&page=${page}&image_type=photo`;
     try {
-      const res = await fetch(link);
+      const res = await fetch(url);
       const data = await res.json();
-      setImages(data.hits);
+      setImages(oldPhotos => {
+        if (searchTerm && page === 1) {
+          return [...data.hits];
+        } else if (searchTerm) {
+          return [...oldPhotos, ...data.hits];
+        } else {
+          return [...oldPhotos, ...data.hits];
+        }
+      });
+      setIsLoading(false);
     } catch (e) {
       setIsLoading(false);
       console.log(e);
     }
-    setIsLoading(false);
   };
 
   useEffect(
-    () => fetchImages(url),
+    () => fetchImages(),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [searchTerm]
+    [searchTerm, page]
   );
+
+  useEffect(() => {
+    const event = window.addEventListener('scroll', () => {
+      if (
+        window.innerHeight + window.scrollY >=
+        document.body.scrollHeight - 2
+      ) {
+        setPage(oldPage => oldPage + 1);
+      }
+    });
+    return () => window.removeEventListener('scroll', event);
+  }, []);
 
   return (
     <div className='grid-container-app'>
@@ -37,7 +59,8 @@ function App() {
           <h1>No Images Found</h1>
         </div>
       )}
-      {isLoading ? <Loading /> : <ImagesDisplay images={images} />}
+      <ImagesDisplay images={images} />
+      {isLoading && <Loading />}
     </div>
   );
 }
